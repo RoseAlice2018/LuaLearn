@@ -3,3 +3,7 @@
 --- Created by reebdeve.
 --- DateTime: 2022/7/12 16:03
 ---
+
+for i = -10,10 do
+    print(i,i%3)
+end

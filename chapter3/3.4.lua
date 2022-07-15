@@ -3,3 +3,8 @@
 --- Created by reebdeve.
 --- DateTime: 2022/7/12 16:06
 ---
+print(2^3^4)
+print((2^3)^4)
+print(2^(3^4))
+print(2^-3^4)
+print(2^(-(3^4)))

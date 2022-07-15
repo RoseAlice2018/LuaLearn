@@ -3,3 +3,13 @@
 --- Created by reebdeve.
 --- DateTime: 2022/7/12 16:09
 ---
+
+function volume_of_cone (height,angle)
+    r  = height * math.tan(math.rad(angle))
+    print("tan is",angle)
+    print("r = ",r)
+    return (1/3)*math.pi*height*(r^2)
+end
+
+
+print(volume_of_cone(1,45))

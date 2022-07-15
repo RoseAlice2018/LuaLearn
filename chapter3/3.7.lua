@@ -3,3 +3,14 @@
 --- Created by reebdeve.
 --- DateTime: 2022/7/12 16:10
 ---
+
+function gaussrand()
+    local v1,v2,s
+    local phase = 0
+    local x
+    if phase == 0 then
+        repeat
+
+        until 1
+    end
+end

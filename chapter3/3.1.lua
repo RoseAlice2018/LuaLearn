@@ -3,3 +3,7 @@
 --- Created by reebdeve.
 --- DateTime: 2022/7/12 15:56
 ---
+
+
+--print(.e12)
+print(0xABF)
