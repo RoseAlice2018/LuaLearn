@@ -1,5 +1,81 @@
 
-## chapter5 
+## chapter3 数值
+
+### 3.1 整型算术回环
+- 当整数型操作时出现比MIN，MAX溢出时，结果就会回环（wrap  around）
+```lua
+> math.maxinteger + 1 == math.mininteger -->true
+> math.mininteger - 1 == math.maxinteger -->true
+> -math.mininteger == math.maxinteger + 1 == math.mininteger
+> math.mininteger // -1 == math.mininteger 
+```
+### 3.2 负数的%操作
+- X%K
+- 如果K是正常量，即使X是负数，结果也会在【0，K-1】之间。
+- % 取模运算对的结果符号永远跟随第二个常量的符号。
+### 3.3 运算符操作优先级
+优先级从高到底
+```lua
+^
+- # ~ not 
+* / // %
+..
+<< >>
+& 
+~
+|
+< > <= >= ~= ==
+and 
+or
+```
+### 3.4 三角函数
+
+### 3.5 正态分布的伪随机数发生器
+
+### 3.6 新的运算符 //
+- // floor除法，floor除法将会对得到的商向负无穷取整。从而保证结果是一个整数。
+```lua
+> 3 // 2 --> 1
+> -9 // 2 -->-5
+```
+
+### 3.7 floor , ceil , modf
+- floor 向负无穷取整
+- ceil  向正无穷取整
+- modf  向零取整
+
+## chapter4 字符串
+### 4.1 gsub 函数
+- string.gsub(s,pattern,replace[,m])
+- 函数在string s中，按pattern给的格式寻找，并用replace进行代替，如果有m（这个变量可选），则只replace查找找的前m个子串
+- gsub都使用很多，可以参考chapter4 gsub文件学习。
+
+### 4.2  [[]] 使用
+- 可以使用一对[[]]来声明长字符串或多行字符串常量
+  - 被扩起来的内容中的转义序列不会被转义。
+  - 如果多行字符串的第一个字符是换行符，那么这个换行符会被忽略。
+
+```lua
+page = [[
+   <html>
+   <head>
+   </head>
+   </html>
+]]
+```
+### 4.3  utf8
+可以使用转义序列\u{h..h}来声明UTF-8字符，{}中支持任意有效的十六进制
+```lua
+> \u{3b1} \u{3b2} \u{3b3} ---> 
+```
+### 4.4 and or not
+### 4.4 #操作符
+- 可以使用#操作符获得字符串长度
+```lua
+a = "hello"
+print(#a)
+```
+## chapter5 表 
 ### 5.1 a.x == a["X"] a[x] == a[x]
 - 注意两者之间差别
 
@@ -65,3 +141,14 @@ x,y = foo(),20 -- x = "a", y = "20"
   - f(foo())lua将会把foo的返回值个数调整到跟f的参数列表个数一致。
 
 ### 6.2 请编写一个函数，该函数用于打乱一个指定的数组。请保证所有的排列都是等概率的。
+
+
+## chapter8 补充
+### 8.1 在Lua中，循环体内的声明变量的作用域包括测试条件
+```lua
+local sqr = x / 2
+repeat
+  sqr = (sqr + x/sqr) / 2
+  local error = math.abs(sqr^2 - x)
+until error < x/10000 --局部变量'error'此时仍然可见
+```
